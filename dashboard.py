@@ -6,7 +6,7 @@ import sqlite3
 conn = sqlite3.connect("/Users/sydneyci11/Documents/github-trend-analysis/github_trends.db")
 
 # Fetch data
-df = pd.read_sql("SELECT * FROM github_trends ORDER BY stars DESC LIMIT 20;", conn)
+df = pd.read_sql("SELECT * FROM github_trends ORDER BY stars DESC;", conn)
 conn.close()
 
 # Create Streamlit app
