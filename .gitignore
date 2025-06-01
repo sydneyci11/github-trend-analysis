@@ -1,5 +1,18 @@
+# Python virtual environment
 github-trend-env/
+
+# Environment variables
 .env
+.env.*
+
+# Database files
 *.db
+*.duckdb
 github_trends.db
+github_trends.duckdb
+
+# macOS system files
 .DS_Store
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
