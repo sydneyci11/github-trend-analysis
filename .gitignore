@@ -16,3 +16,5 @@ github_trends.duckdb
 
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/
+
+__pycache__
