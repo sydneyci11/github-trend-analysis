@@ -18,3 +18,5 @@ HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
 if not verify_github_token(GITHUB_TOKEN):
     raise EnvironmentError("GitHub token is invalid or expired.")
+elif not GITHUB_TOKEN:
+    raise EnvironmentError("GITHUB_TOKEN is not found in environment variables.")
