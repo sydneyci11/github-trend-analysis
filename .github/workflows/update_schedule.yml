@@ -41,6 +41,7 @@ jobs:
           git config user.email github-actions@github.com
           git add github_trends.duckdb
           git commit -m "Weekly auto-update DuckDB"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
           git push
         # Commits and pushes the updated DuckDB file back to the repository
 
