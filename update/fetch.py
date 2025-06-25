@@ -55,6 +55,24 @@ def should_fetch_repo(repo_name, last_updated, db_path):
     """check if the database needs to be updated, if it is most updated, not renew"""
     conn = duckdb.connect(db_path)
     cursor = conn.cursor()
+
+    # Ensures the database schema exists
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS github_trends (
+            name TEXT,
+            full_name TEXT PRIMARY KEY,
+            description TEXT,
+            stars INTEGER,
+            forks INTEGER,
+            language TEXT,
+            watchers INTEGER,
+            commits INTEGER,
+            issues INTEGER,
+            created_at TEXT,
+            updated_at TEXT,
+            url TEXT
+        )
+    """)
     
     cursor.execute("SELECT updated_at FROM github_trends WHERE full_name = ?", (repo_name,))
     result = cursor.fetchall()  
