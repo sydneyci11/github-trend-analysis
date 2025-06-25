@@ -29,6 +29,7 @@ jobs:
       - name: Run scheduled update script
         env:
           GITHUB_TOKEN: ${{ secrets.PUSH_GITHUB_TOKEN }}
+          DATABASE_PATH: github_trends.duckdb
         run: python scheduled_job.py
         # Runs your custom script to fetch GitHub repo data and update the database
 
