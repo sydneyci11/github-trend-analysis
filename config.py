@@ -8,7 +8,7 @@ from update.env_setup import verify_github_token
 load_dotenv()
 
 # GitHub API Token
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN") or os.getenv("PUSH_GITHUB_TOKEN")
 
 # Local DuckDB file path
 DB_PATH = os.getenv("DATABASE_PATH")
@@ -16,7 +16,10 @@ DB_PATH = os.getenv("DATABASE_PATH")
 # GitHub request headers
 HEADERS = {"Authorization": f"token {GITHUB_TOKEN}"}
 
+# Check if token exists first
+if not GITHUB_TOKEN:
+    raise EnvironmentError("GITHUB_TOKEN is not found in environment variables.")
+
+# Then verify the token
 if not verify_github_token(GITHUB_TOKEN):
     raise EnvironmentError("GitHub token is invalid or expired.")
-elif not GITHUB_TOKEN:
-    raise EnvironmentError("GITHUB_TOKEN is not found in environment variables.")
