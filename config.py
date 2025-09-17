@@ -8,7 +8,7 @@ from update.env_setup import verify_github_token
 load_dotenv()
 
 # GitHub API Token
-GITHUB_TOKEN = os.getenv("GITHUB_TOKEN") or os.getenv("PUSH_GITHUB_TOKEN")
+GITHUB_TOKEN = os.getenv("PUSH_GITHUB_TOKEN") or os.getenv("GITHUB_TOKEN")
 
 # Local DuckDB file path
 DB_PATH = os.getenv("DATABASE_PATH")

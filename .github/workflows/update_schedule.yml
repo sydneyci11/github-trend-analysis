@@ -28,7 +28,10 @@ jobs:
 
       - name: Run scheduled update script
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          # GitHub's default token (github.token) lacks permission to call certain user-related endpoints (like /user),
+          # causing 403 errors in verify_github_token(). This change switches to a Personal Access Token (PAT) stored
+          # in PUSH_GITHUB_TOKEN secret for proper authentication.
+          GITHUB_TOKEN: ${{ secrets.PUSH_GITHUB_TOKEN }}
           DATABASE_PATH: github_trends.duckdb
         run: python scheduled_job.py
         # Runs your custom script to fetch GitHub repo data and update the database
