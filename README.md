@@ -11,7 +11,7 @@ and presents them—visually and accessibly—through a minimal interface.
 
 ## 🔗 Live Demo
 
-👉 [Launch the Streamlit Dashboard]([https://your-app-name.streamlit.app](https://sydneyci-trend-tracker.streamlit.app/))
+👉 [Launch the Streamlit Dashboard](https://sydneyci-trend-tracker.streamlit.app/)
 
 Explore the latest trends in:
 - **AI and Machine Learning**
