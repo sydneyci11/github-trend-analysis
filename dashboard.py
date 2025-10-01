@@ -1,12 +1,24 @@
 import streamlit as st
 import duckdb
+import os
+import requests
 from difflib import get_close_matches
 
 # Load data with caching for performance
 @st.cache_data
 
 def load_data():
-    conn = duckdb.connect("/Users/sydneyci11/Documents/github-trend-analysis/github_trends.duckdb")
+    # URL to your Hugging Face dataset file
+    db_url = "https://huggingface.co/datasets/sydneyci11/github_trend_db/resolve/main/github_trends.duckdb"
+    db_path = "/tmp/github_trends.duckdb"  # safe path on Streamlit Cloud
+
+    # Download from Hugging Face if not already in /tmp
+    if not os.path.exists(db_path):
+        with open(db_path, "wb") as f:
+            f.write(requests.get(db_url).content)
+
+    # Connect to the downloaded DuckDB file
+    conn = duckdb.connect(db_path)
     df = conn.execute("""
         SELECT 
             *, 
