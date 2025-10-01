@@ -51,7 +51,7 @@ df = load_data()
 
 # Create Streamlit app
 # UI Header 
-st.title("GitHub Trending Repositories Dashboard")
+st.title("GitHub Trend Observatory")
 st.markdown("Track top repositories across AI/ML/NLP/CV domains, sorted by GitHub metadata.")
 
 # Keyword-based filtering
